@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FoodScan AI</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #eef7f0, #d9eede);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 700px;
+      background: white;
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      color: #1f6b3b;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-bottom: 25px;
+    }
+
+    .upload-box {
+      border: 2px dashed #3d9b61;
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      margin: 15px;
+    }
+
+    button {
+      background: #267a45;
+      color: white;
+      border: none;
+      padding: 13px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #195c32;
+    }
+
+    #preview {
+      display: none;
+      width: 250px;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 20px auto;
+    }
+
+    #result {
+      display: none;
+      margin-top: 25px;
+      text-align: left;
+      background: #f1faf3;
+      padding: 25px;
+      border-radius: 15px;
+    }
+
+    .nutrition {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .value {
+      color: #267a45;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🍎 FoodScan AI</h1>
+
+    <p class="subtitle">
+      Upload a food image and get nutrition information
+    </p>
+
+    <div class="upload-box">
+
+      <h3>Upload Food Image</h3>
+
+      <label for="foodImage">Choose food image</label>
+      <input
+        type="file"
+        id="foodImage"
+        accept="image/*"
+      >
+
+      <br>
+
+      <button onclick="scanFood()">
+        Scan Food
+      </button>
+
+    </div>
+
+    <img id="preview" alt="Preview of uploaded food">
+
+    <div id="result">
+
+      <h2>Scan Result</h2>
+
+      <p>
+        <strong>Detected Food:</strong>
+        <span id="foodName">Apple</span>
+      </p>
+
+      <div class="nutrition">
+
+        <div class="card">
+          Calories
+          <div class="value">95 kcal</div>
+        </div>
+
+        <div class="card">
+          Protein
+          <div class="value">0.5 g</div>
+        </div>
+
+        <div class="card">
+          Carbohydrates
+          <div class="value">25 g</div>
+        </div>
+
+        <div class="card">
+          Fat
+          <div class="value">0.3 g</div>
+        </div>
+
+      </div>
+
+      <br>
+
+      <p>
+        <strong>Health Rating:</strong>
+        🟢 Healthy
+      </p>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    function scanFood() {
+
+      const fileInput =
+        document.getElementById("foodImage");
+
+      const preview =
+        document.getElementById("preview");
+
+      const result =
+        document.getElementById("result");
+
+      if (fileInput.files.length === 0) {
+        alert("Please upload a food image first!");
+        return;
+      }
+
+      const imageFile =
+        fileInput.files[0];
+
+      preview.src =
+        URL.createObjectURL(imageFile);
+
+      preview.style.display =
+        "block";
+
+      // Demo scan result
+      // Later connect an AI food-recognition API here
+
+      setTimeout(() => {
+
+        result.style.display =
+          "block";
+
+      }, 1000);
+
+    }
+
+  </script>
+
+</body>
+</html>
