@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MouseEvent</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #2d5016;
+      color: white;
+    }
+
+    button:hover {
+      background-color: yellowgreen;
+    }
+  </style>
+  <script>
+    function eventCall() {
+      alert("This are the mouseEvent");
+    }
+
+    function section() {
+      alert("exaple of function 2");
+      }
+
+  </script>
+</head>
+<body>
+  <button id="box1" onclick="eventCall()">box1</button>
+  <button id="box2" ondblclick="section()">box2</button>
+  <button id="box3" onmousedown="eventCall()">box3</button>
+  <button id="box4" onmouseup="section()">box4</button>
+  <button id="box5" onmouseover="eventCall()" onfocus="eventCall()">box5</button>
+  <button id="box6" onmouseout="section()" onfocus="section()" onblur="section()">box6</button>
+  <button id="box7" oncontextmenu="eventCall()">box7</button>
+</body>
+</html>
