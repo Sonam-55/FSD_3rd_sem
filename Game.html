@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #6c1c4e;
+            font-family: Arial, sans-serif;
+        }
+
+        .game {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        #status {
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .board {
+            width: 330px;
+            height: 330px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin: auto;
+        }
+
+        .cell {
+            width: 106px;
+            height: 106px;
+            background-color: white;
+            border: 2px solid black;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .cell:hover {
+            background-color: #e8e8e8;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: black;
+            color: rgb(29, 155, 174);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="game">
+
+        <h1>Tic Tac Toe</h1>
+
+        <div id="status">Player X Turn</div>
+
+        <div class="board">
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+            <button class="cell"></button>
+            <button class="cell"></button>
+            <button class="cell"></button>
+
+        </div>
+
+        <button onclick="restartGame()">Restart Game</button>
+
+    </div>
+
+    <script>
+
+        const cells = document.querySelectorAll(".cell");
+        const status = document.getElementById("status");
+
+        let currentPlayer = "X";
+        let gameOver = false;
+
+        const winningPatterns = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+
+            [0, 4, 8],
+            [2, 4, 6]
+        ];
+
+        cells.forEach((cell) => {
+
+            cell.addEventListener("click", () => {
+
+                if (cell.textContent !== "" || gameOver) {
+                    return;
+                }
+
+                cell.textContent = currentPlayer;
+
+                checkWinner();
+
+                if (!gameOver) {
+                    currentPlayer =
+                        currentPlayer === "X" ? "O" : "X";
+
+                    status.textContent =
+                        "Player " + currentPlayer + " Turn";
+                }
+
+            });
+
+        });
+
+        function checkWinner() {
+
+            for (let pattern of winningPatterns) {
+
+                let a = cells[pattern[0]].textContent;
+                let b = cells[pattern[1]].textContent;
+                let c = cells[pattern[2]].textContent;
+
+                if (a !== "" && a === b && b === c) {
+
+                    status.textContent =
+                        "Player " + a + " Wins!";
+
+                    gameOver = true;
+                    return;
+                }
+            }
+
+            let draw = true;
+
+            cells.forEach((cell) => {
+                if (cell.textContent === "") {
+                    draw = false;
+                }
+            });
+
+            if (draw) {
+                status.textContent = "Game Draw!";
+                gameOver = true;
+            }
+        }
+
+        function restartGame() {
+
+            cells.forEach((cell) => {
+                cell.textContent = "";
+            });
+
+            currentPlayer = "X";
+            gameOver = false;
+
+            status.textContent = "Player X Turn";
+        }
+
+    </script>
+
+</body>
+</html>
