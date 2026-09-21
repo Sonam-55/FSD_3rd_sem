@@ -1,0 +1,98 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keyboard Events</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .box {
+            width: 300px;
+            padding: 25px;
+            background-color: yellowgreen;
+            border: 2px solid gray;
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px gray;
+        }
+
+        .box h1 {
+            margin-top: 0;
+            color: blue;
+            font-size: 25px;
+        }
+
+        .input-box {
+            margin-bottom: 20px;
+        }
+
+        .input-box label {
+            display: block;
+            color: blue;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 35px;
+            border: 2px solid gray;
+            border-radius: 10px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+     <div class="box">
+        <h1>Keyboard Events</h1>
+
+        <div class="input-box">
+            <label for="keydown">Key Down</label>
+            <input type="text" id="keydown">
+        </div>
+
+        <div class="input-box">
+            <label for="keypress">Key Press</label>
+            <input type="text" id="keypress">
+        </div>
+
+        <div class="input-box">
+            <label for="keyup">Key Up</label>
+            <input type="text" id="keyup">
+        </div>
+
+    </div> 
+
+      <script>
+
+        // Keydown event
+        document.getElementById("keydown").addEventListener("keydown", function() {
+            console.log("Key Down Event");
+        });
+
+        // Keypress event
+        document.getElementById("keypress").addEventListener("keypress", function() {
+            console.log("Key Press Event");
+        });
+
+        // Keyup event
+        document.getElementById("keyup").addEventListener("keyup", function() {
+            console.log("Key Up Event");
+        });
+
+    </script> 
+
+</body>
+</html>
