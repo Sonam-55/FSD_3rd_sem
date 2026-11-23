@@ -1,0 +1,24 @@
+{
+  "name": "fsd-3rd-sem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Assignment5.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sonam-55/FSD_3rd_sem.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sonam-55/FSD_3rd_sem/issues"
+  },
+  "homepage": "https://github.com/Sonam-55/FSD_3rd_sem#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
